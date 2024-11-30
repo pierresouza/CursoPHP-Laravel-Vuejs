@@ -26,12 +26,13 @@ Route::prefix('/app')->group(function () {
     })->name('app.produtos');
 });
 
-// Route::get(
-//     '/contato/{nome}/{categoria_id}', //
-//     function (
-//         string $nome = 'Desconhecido',
-//         int $categoria_id = 1, // 1 = Informação
-//     ) {
-//         echo "Estamos aqui: $nome - $categoria_id ";
-//     }
-// )->where('categoria_id', '[0-9]+')->where('nome', '[A-Za-z]+');
+Route::get('/teste/{p1}/{p2}', [\App\Http\Controllers\TesteController::class, 'teste'])->name('teste');
+
+Route::get('/rota2', function () {
+    return redirect()->route('site.rota1');
+})->name('site.rota2');
+
+
+Route::fallback(function () {
+    echo 'A rota acessada não existe. <a href="' . route('site.index') . '">Clique aqui</a> para ir para a página inicial';
+});
