@@ -12,6 +12,16 @@
 */
 @endphp
 
+@isset($fornecedores)
+    Fornecedor: {{ $fornecedores[0]['nome'] }}
+    <br>
+    Status: {{ $fornecedores[0]['status'] }}
+    <br>
+    @isset($fornecedores[0]['cnpj'])
+        CNPJ: {{ $fornecedores[0]['cnpj'] }}
+    @endisset
+@endisset
+
 
 @if(count($fornecedores) > 0 && count($fornecedores) < 10)
     <h3>Existem alguns fornecedores cadastrados</h3>
